@@ -38,6 +38,7 @@ namespace Psytest.UI.Pages
                 Where(p => p.TestingId == _testing.Id).ToList();
             for (int i = 0; i < questions.Count; i++)
             {
+                // You can use questions[i].Id here
                 PointCounter.questionAnswerPairs.Add(i + 1, 0);
                 MainStackPanel.Children.Add(new TestingUserControl(i + 1, questions[i]));
             }
@@ -66,6 +67,7 @@ namespace Psytest.UI.Pages
                         var points = PsytestDBEntities.GetContext().Points.Where(p => p.AnswerId == questionAnswerPair.Value).ToList();
                         foreach (var point in PsytestDBEntities.GetContext().Points.Where(p => p.AnswerId == questionAnswerPair.Value).ToList())
                         {
+                            // what happens if this key doesn't exist? better do if(PointCounter.categoryPointCountPairs.contains(point.CategoryId)) { logic } 
                             PointCounter.categoryPointCountPairs[point.CategoryId] += point.PointSum;
                         }
                     }

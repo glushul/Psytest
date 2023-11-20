@@ -23,6 +23,7 @@ namespace Psytest.UI.UserControls
     public partial class TestingUserControl : UserControl
     {
         public Answer chosenAnswer { get; set; }
+        // I think you need only question here, you could use question.Id as numerator
         public TestingUserControl(int numerator, Question question)
         {
             InitializeComponent();
