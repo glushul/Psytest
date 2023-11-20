@@ -1,0 +1,42 @@
+﻿<Window x:Class="Psytest.UI.Windows.StudentInfoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Psytest.UI.Windows"
+        mc:Ignorable="d"
+            Title="Данные студента" Height="444" Width="500" WindowStartupLocation="CenterScreen"
+    MinHeight="444" MinWidth="500" MaxHeight="444" MaxWidth="500" Topmost="True" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="140"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Фамилия:" HorizontalAlignment="Right" FontSize="22"/>
+        <TextBox x:Name="TextBoxSurname" Grid.Row="0" Grid.Column="1" Width="300" HorizontalAlignment="Left"
+                 Margin="15, 0, 15, 0" Height="40" Text="{Binding Number}" MaxLength="100" HorizontalContentAlignment="Left"/>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Имя:" HorizontalAlignment="Right" FontSize="22"/>
+        <TextBox x:Name="TextBoxName" Grid.Row="1" Grid.Column="1" Width="300" HorizontalAlignment="Left"
+                 Margin="15, 0, 15, 0" Height="40" Text="{Binding Number}" MaxLength="100" HorizontalContentAlignment="Left"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Группа:" HorizontalAlignment="Right" FontSize="22"/>
+        <ComboBox x:Name="ComboBoxGroup" Grid.Row="2" Grid.Column="1" Width="200" HorizontalAlignment="Left"
+                 Margin="15, 0, 15, 0" Height="40" HorizontalContentAlignment="Center" SelectedItem="{Binding Group}"
+                 DisplayMemberPath="FullName"/>
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Пол:" HorizontalAlignment="Right" FontSize="22"/>
+        <ComboBox x:Name="ComboBoxGender" Grid.Row="3" Grid.Column="1" Width="200" HorizontalAlignment="Left"
+                 Margin="15, 0, 15, 0" Height="40" HorizontalContentAlignment="Center" SelectedItem="{Binding Gender}"
+                 DisplayMemberPath="Name"/>
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="Возраст:" HorizontalAlignment="Right" FontSize="22"/>
+        <TextBox x:Name="TextBoxAge" Grid.Row="4" Grid.Column="1" Width="100" HorizontalAlignment="Left"
+                 Margin="15, 0, 15, 0" Height="40" Text="{Binding Age}" MaxLength="2" HorizontalContentAlignment="Left"/>
+        <Button x:Name="ButtonStart" Grid.Row="5" Grid.ColumnSpan="2" Content="Начать" Click="ButtonStart_Click"/>
+    </Grid>
+</Window>

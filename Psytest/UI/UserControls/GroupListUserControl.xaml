@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="Psytest.UI.UserControls.GroupListUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Psytest.UI.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="110" d:DesignWidth="300" Margin="15, 15, 15, 15" FontFamily="Verdana">
+    <Border BorderThickness="1">
+        <Grid Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="45"/>
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="FullnameTextBlock" Grid.Row="0" Text="{Binding FullName}" FontSize="26" 
+                   TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="1" HorizontalAlignment="Center" Text="{Binding StudentCount,
+            StringFormat={}Кол-во прошедших: {0}}" FontSize="16" Foreground="#FF707070"/>
+            <Button x:Name="ButtonSeeGroup" Grid.Row="3" Content="Посмотреть" Click="ButtonSeeGroup_Click"/>
+        </Grid>
+    </Border>
+</UserControl>
