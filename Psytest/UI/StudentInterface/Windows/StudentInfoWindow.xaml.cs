@@ -52,10 +52,10 @@ namespace Psytest.UI.Windows
                 {
                     var studentResults = PsytestDBEntities.GetContext().StudentResults.
                     Where(p => p.Name == student.Name 
-                    && p.Surname == p.Name && p.Age == student.Age 
+                    && p.Surname == p.Surname && p.Age == student.Age 
                     && p.GroupId == student.Group.Id && p.GenderId == student.Gender.Id
-                    && p.TestingId == _testing.Id).ToList();
-                    if (studentResults == null)
+                    && p.TestingId == _testing.Id && p.TestingYear == DateTime.Now.Year).ToList();
+                    if (studentResults.Count == 0)
                     {
                         FrameNavigation.Navigate(new TestingPage(student, _testing));
                         this.Close();

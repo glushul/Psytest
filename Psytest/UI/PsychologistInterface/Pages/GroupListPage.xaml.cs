@@ -16,7 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Psytest.UI.Pages
+namespace Psytest.UI.PsychologistInterface.Pages
 {
     /// <summary>
     /// Логика взаимодействия для GroupListPage.xaml
@@ -29,14 +29,9 @@ namespace Psytest.UI.Pages
 
             UpdateGroups();
 
-            ComboBoxCourse.Items.Add("Все");
-            List<int> courses = new List<int>() { 1, 2, 3, 4};
-            ComboBoxCourse.Items.Add(courses);
-            ComboBoxCourse.SelectedIndex = 0;
-
             ComboBoxFaculties.Items.Add(new Faculty() { Name = "Все" });
-            var faculties = PsytestDBEntities.GetContext().Faculties.ToList();
-            ComboBoxFaculties.Items.Add(faculties);
+            foreach(var faculty in PsytestDBEntities.GetContext().Faculties.ToList())
+                ComboBoxFaculties.Items.Add(faculty);
             ComboBoxFaculties.SelectedIndex = 0;
         }
 
@@ -79,11 +74,6 @@ namespace Psytest.UI.Pages
 
             groups = groups.Where(p => p.Number.ToString().Contains(TextBoxNumber.Text)).
                 OrderBy(p => p.Number).ToList();
-
-            if (ComboBoxCourse.SelectedIndex == 0)
-                groups = groups.ToList();
-            else
-                groups = groups.Where(p => p.Course == ComboBoxCourse.SelectedIndex).ToList();
 
             if (ComboBoxFaculties.SelectedIndex == 0)
                 groups = groups.ToList();

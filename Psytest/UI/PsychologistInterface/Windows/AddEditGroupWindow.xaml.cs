@@ -1,6 +1,7 @@
 ﻿using Psytest.Data;
 using Psytest.Instruments;
 using Psytest.UI.Pages;
+using Psytest.UI.PsychologistInterface.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,11 +31,6 @@ namespace Psytest.UI.Windows
             ComboBoxForm.Items.Add("Бюджет");
             ComboBoxForm.Items.Add("Коммерция");
             ComboBoxForm.SelectedIndex = 0;
-            ComboBoxCourse.Items.Add(1);
-            ComboBoxCourse.Items.Add(2);
-            ComboBoxCourse.Items.Add(3);
-            ComboBoxCourse.Items.Add(4);
-            ComboBoxCourse.SelectedIndex = 0;
             ComboBoxDepartments.ItemsSource = PsytestDBEntities.
                 GetContext().Faculties.ToList();
             ComboBoxDepartments.SelectedIndex = 0;
@@ -54,9 +50,7 @@ namespace Psytest.UI.Windows
             else
                 form = "КД9";
             _group.FullName = _group.Number.ToString() + "-"
-                + form + "-" + (ComboBoxCourse.SelectedIndex + 1).ToString()
-                + (ComboBoxDepartments.SelectedValue as Faculty).Name;
-            _group.Course = ComboBoxCourse.SelectedIndex + 1;
+                + form + "-" + (ComboBoxDepartments.SelectedValue as Faculty).Name;
             _group.FacultyId = (ComboBoxDepartments.SelectedValue as Faculty).Id;
 
             StringBuilder errors = new StringBuilder();

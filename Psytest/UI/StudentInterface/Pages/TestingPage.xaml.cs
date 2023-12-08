@@ -44,9 +44,7 @@ namespace Psytest.UI.Pages
 
             var categories = PsytestDBEntities.GetContext().Categories.Where(p => p.TestingId == _testing.Id).ToList();
             foreach (var category in categories)
-            {
                 PointCounter.categoryPointCountPairs.Add(category.Id, 0);
-            }
         }
 
         private void ButtonEnd_Click(object sender, RoutedEventArgs e)
@@ -58,16 +56,14 @@ namespace Psytest.UI.Pages
                 {
                     if (questionAnswerPair.Value == 0)
                     {
-                        MessageBox.Show($"Ответ на {questionAnswerPair.Key} вопрос не дан");
+                        MessageBox.Show($"Ответ на вопрос №{questionAnswerPair.Key} не выбран!");
                         return;
                     }
                     else
                     {
                         var points = PsytestDBEntities.GetContext().Points.Where(p => p.AnswerId == questionAnswerPair.Value).ToList();
-                        foreach (var point in PsytestDBEntities.GetContext().Points.Where(p => p.AnswerId == questionAnswerPair.Value).ToList())
-                        {
+                        foreach (var point in points)
                             PointCounter.categoryPointCountPairs[point.CategoryId] += point.PointSum;
-                        }
                     }
                 }
 
@@ -80,11 +76,19 @@ namespace Psytest.UI.Pages
                     studentResult.Gender = _student.Gender;
                     studentResult.Group = _student.Group;
                     studentResult.Age = _student.Age;
+                    studentResult.TestingYear = DateTime.Now.Year;
                     studentResult.PointSum = categoryPointCountPair.Value;
                     studentResult.CategoryId = categoryPointCountPair.Key;
-                    PsytestDBEntities.GetContext().StudentResults.Add(studentResult);
-                    PsytestDBEntities.GetContext().SaveChanges();
-                    FrameNavigation.Navigate(new TestingListPage());
+                    try
+                    {
+                        PsytestDBEntities.GetContext().StudentResults.Add(studentResult);
+                        PsytestDBEntities.GetContext().SaveChanges();
+                        FrameNavigation.Navigate(new TestingListPage());
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
                 }
                 PointCounter.questionAnswerPairs.Clear();
                 PointCounter.categoryPointCountPairs.Clear();

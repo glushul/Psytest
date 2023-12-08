@@ -32,7 +32,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nchar" MaxLength="7" Nullable="false" />
         </EntityType>
         <EntityType Name="Group">
@@ -42,7 +42,6 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Number" Type="int" Nullable="false" />
           <Property Name="FullName" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Course" Type="int" Nullable="false" />
           <Property Name="FacultyId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Point">
@@ -81,15 +80,17 @@
             <PropertyRef Name="GroupId" />
             <PropertyRef Name="CategoryId" />
             <PropertyRef Name="TestingId" />
+            <PropertyRef Name="TestingYear" />
           </Key>
           <Property Name="Surname" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="GroupId" Type="int" Nullable="false" />
           <Property Name="CategoryId" Type="int" Nullable="false" />
           <Property Name="TestingId" Type="int" Nullable="false" />
-          <Property Name="PointSum" Type="int" Nullable="false" />
+          <Property Name="TestingYear" Type="int" Nullable="false" />
           <Property Name="GenderId" Type="int" Nullable="false" />
           <Property Name="Age" Type="int" Nullable="false" />
+          <Property Name="PointSum" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -343,7 +344,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="7" FixedLength="true" Unicode="true" Nullable="false" />
           <NavigationProperty Name="StudentResults" Relationship="Self.FK_StudentResult_Gender" FromRole="Gender" ToRole="StudentResult" />
         </EntityType>
@@ -354,7 +355,6 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Number" Type="Int32" Nullable="false" />
           <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Course" Type="Int32" Nullable="false" />
           <Property Name="FacultyId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Faculty" Relationship="Self.FK_Group_Faculties" FromRole="Group" ToRole="Faculty" />
           <NavigationProperty Name="StudentResults" Relationship="Self.FK_StudentResult_Group" FromRole="Group" ToRole="StudentResult" />
@@ -400,15 +400,17 @@
             <PropertyRef Name="GroupId" />
             <PropertyRef Name="CategoryId" />
             <PropertyRef Name="TestingId" />
+            <PropertyRef Name="TestingYear" />
           </Key>
           <Property Name="Surname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="GroupId" Type="Int32" Nullable="false" />
           <Property Name="CategoryId" Type="Int32" Nullable="false" />
           <Property Name="TestingId" Type="Int32" Nullable="false" />
-          <Property Name="PointSum" Type="Int32" Nullable="false" />
+          <Property Name="TestingYear" Type="Int32" Nullable="false" />
           <Property Name="GenderId" Type="Int32" Nullable="false" />
           <Property Name="Age" Type="Int32" Nullable="false" />
+          <Property Name="PointSum" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Category" Relationship="Self.FK_StudentResult_Category" FromRole="StudentResult" ToRole="Category" />
           <NavigationProperty Name="Gender" Relationship="Self.FK_StudentResult_Gender" FromRole="StudentResult" ToRole="Gender" />
           <NavigationProperty Name="Group" Relationship="Self.FK_StudentResult_Group" FromRole="StudentResult" ToRole="Group" />
@@ -676,7 +678,6 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Number" ColumnName="Number" />
                 <ScalarProperty Name="FullName" ColumnName="FullName" />
-                <ScalarProperty Name="Course" ColumnName="Course" />
                 <ScalarProperty Name="FacultyId" ColumnName="FacultyId" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -720,9 +721,10 @@
                 <ScalarProperty Name="GroupId" ColumnName="GroupId" />
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
                 <ScalarProperty Name="TestingId" ColumnName="TestingId" />
-                <ScalarProperty Name="PointSum" ColumnName="PointSum" />
+                <ScalarProperty Name="TestingYear" ColumnName="TestingYear" />
                 <ScalarProperty Name="GenderId" ColumnName="GenderId" />
                 <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="PointSum" ColumnName="PointSum" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -28,7 +28,7 @@ namespace Psytest.UI.UserControls
             InitializeComponent();
             _testing = testing;
             _group = group;
-            TestingTextBlock.Text = testing.FullName;
+            TestingTextBlock.Text = testing.Name;
             studentCount = PsytestDBEntities.GetContext().StudentResults.
                 Where(p => p.GroupId == group.Id && p.TestingId == testing.Id).
                 GroupBy(p => new { p.Surname, p.Name }).Count();

@@ -1,10 +1,10 @@
-﻿<Page x:Class="Psytest.UI.Pages.GroupListPage"
+﻿<Page x:Class="Psytest.UI.PsychologistInterface.Pages.GroupListPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Psytest.UI.Pages"
-      xmlns:uc="clr-namespace:Psytest.UI.UserControls"
+      xmlns:uc="clr-namespace:Psytest.UI.PsychologistInterface.UserControls"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800" FontFamily="Bahnschrift"
       Title="UsersPage">
@@ -19,11 +19,8 @@
         <GridSplitter Grid.Row="1" Background="#FFB5CDEF" Height="1" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
         
         <GridSplitter Grid.Row="0" Background="#FFB5CDEF" Height="1" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
-        
-        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
-            <TextBlock Text="Выберите курс: " FontSize="16"/>
 
-            <ComboBox x:Name="ComboBoxCourse" Width="70" Height="35" Margin="0,0,20,0" SelectionChanged="ComboBoxCourse_SelectionChanged"/>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
             
             <TextBlock Text="Выберите отделение: " FontSize="16"/>
 

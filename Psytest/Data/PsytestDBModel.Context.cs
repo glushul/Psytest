@@ -22,7 +22,6 @@ namespace Psytest.Data
                 _context = new PsytestDBEntities();
             return _context;
         }
-
         public PsytestDBEntities()
             : base("name=PsytestDBEntities")
         {

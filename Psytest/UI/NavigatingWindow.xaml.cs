@@ -1,5 +1,6 @@
 ﻿using Psytest.Instruments;
 using Psytest.UI.Pages;
+using Psytest.UI.PsychologistInterface.Pages;
 using Psytest.UI.Windows;
 using System;
 using System.Collections.Generic;
@@ -22,9 +23,9 @@ namespace Psytest
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class NavigatingWindow : Window
     {
-        public MainWindow()
+        public NavigatingWindow()
         {
             InitializeComponent(); 
             Manager.FrameNavigation = FrameNavigation;
@@ -70,7 +71,7 @@ namespace Psytest
             }
             else if (Manager.FrameNavigation.Content.GetType() == typeof(GroupPage))
             {
-                TextBlockNavigation.Text = "Группа";
+                TextBlockNavigation.Text = "Группа " + Manager.ChosenGroup;
                 ButtonBack.Visibility = Visibility.Visible;
                 ButtonExit.Visibility = Visibility.Visible;
             }

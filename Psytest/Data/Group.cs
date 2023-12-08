@@ -23,7 +23,6 @@ namespace Psytest.Data
         public int Id { get; set; }
         public int Number { get; set; }
         public string FullName { get; set; }
-        public int Course { get; set; }
         public int FacultyId { get; set; }
     
         public virtual Faculty Faculty { get; set; }

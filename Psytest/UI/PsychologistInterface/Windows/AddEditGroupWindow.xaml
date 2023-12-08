@@ -5,11 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Psytest.UI.Windows"
         mc:Ignorable="d"
-            Title="Редактирование" Height="350" Width="400" WindowStartupLocation="CenterScreen"
-    MinHeight="350" MinWidth="400" MaxHeight="370" MaxWidth="450" Topmost="True">
+        Title="Редактирование" Height="280" Width="400" WindowStartupLocation="CenterScreen"
+        MinHeight="280" MinWidth="400" MaxHeight="280" MaxWidth="450" Topmost="True">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
@@ -25,12 +24,9 @@
         <TextBlock Grid.Row="1" Grid.Column="0" Text="Форма:" HorizontalAlignment="Right" FontSize="22"/>
         <ComboBox x:Name="ComboBoxForm" Grid.Row="1" Grid.Column="1" Width="200" HorizontalAlignment="Left"
                  Margin="15, 0, 15, 0" Height="40" HorizontalContentAlignment="Center"/>
-        <TextBlock Grid.Row="2" Grid.Column="0" Text="Курс:" HorizontalAlignment="Right" FontSize="22"/>
-        <ComboBox x:Name="ComboBoxCourse" Grid.Row="2" Grid.Column="1" Width="100" HorizontalAlignment="Left"
-                 Margin="15, 0, 15, 0" Height="40" HorizontalContentAlignment="Center"/>
-        <TextBlock Grid.Row="3" Grid.Column="0" Text="Отделение:" HorizontalAlignment="Right" FontSize="22"/>
-        <ComboBox x:Name="ComboBoxDepartments" Grid.Row="3" Grid.Column="1" Width="200" HorizontalAlignment="Left"
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Отделение:" HorizontalAlignment="Right" FontSize="22"/>
+        <ComboBox x:Name="ComboBoxDepartments" Grid.Row="2" Grid.Column="1" Width="200" HorizontalAlignment="Left"
                  Margin="15, 0, 15, 0" Height="40" HorizontalContentAlignment="Center" DisplayMemberPath="Name"/>
-        <Button x:Name="ButtonSave" Grid.Row="5" Grid.ColumnSpan="2" Content="Сохранить" Click="ButtonSave_Click"/>
+        <Button x:Name="ButtonSave" Grid.Row="3" Grid.ColumnSpan="2" Content="Сохранить" Click="ButtonSave_Click"/>
     </Grid>
 </Window>

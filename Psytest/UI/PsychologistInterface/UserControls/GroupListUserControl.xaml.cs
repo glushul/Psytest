@@ -1,5 +1,7 @@
 ﻿using Psytest.Data;
-using Psytest.UI.UserControls;
+using Psytest.Instruments;
+using Psytest.UI.Pages;
+using Psytest.UI.PsychologistInterface.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,19 +17,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Psytest.UI.Pages
+namespace Psytest.UI.PsychologistInterface.UserControls
 {
     /// <summary>
-    /// Логика взаимодействия для TestingListPage.xaml
+    /// Логика взаимодействия для GroupListUserControl.xaml
     /// </summary>
-    public partial class TestingListPage : Page
+    public partial class GroupListUserControl : UserControl
     {
-        public TestingListPage()
+        public GroupListUserControl()
         {
             InitializeComponent();
-            var testings = PsytestDBEntities.GetContext().Testings.ToList();
-            foreach (var testing in testings)
-                WrapPanelTesting.Children.Add(new TestingListUserControl() { DataContext = testing });
+        }
+
+        private void ButtonSeeGroup_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.FrameNavigation.Navigate(new GroupPage(DataContext as Group));
         }
     }
 }

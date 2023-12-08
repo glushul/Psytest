@@ -19,9 +19,10 @@ namespace Psytest.Data
         public int GroupId { get; set; }
         public int CategoryId { get; set; }
         public int TestingId { get; set; }
-        public int PointSum { get; set; }
+        public int TestingYear { get; set; }
         public int GenderId { get; set; }
         public int Age { get; set; }
+        public int PointSum { get; set; }
     
         public virtual Category Category { get; set; }
         public virtual Gender Gender { get; set; }

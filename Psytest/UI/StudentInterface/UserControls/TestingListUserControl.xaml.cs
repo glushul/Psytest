@@ -23,9 +23,11 @@ namespace Psytest.UI.UserControls
     public partial class TestingListUserControl : UserControl
     {
 
-        public TestingListUserControl()
+        public TestingListUserControl(Testing testing)
         {
             InitializeComponent();
+            DataContext = testing;
+            TextBlockName.Text = testing.Id + ". " + testing.Name;
         }
 
         private void ButtonTakeTest_Click(object sender, RoutedEventArgs e)

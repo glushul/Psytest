@@ -47,8 +47,10 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -116,61 +118,68 @@
       <DependentUpon>PsytestDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Instruments\PointCounter.cs" />
-    <Compile Include="UI\UserControls\GroupListUserControl.xaml.cs">
+    <Compile Include="UI\PsychologistInterface\UserControls\GroupListUserControl.xaml.cs">
       <DependentUpon>GroupListUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\UserControls\GroupTestingUserControl.xaml.cs">
+    <Compile Include="UI\PsychologistInterface\UserControls\GroupTestingUserControl.xaml.cs">
       <DependentUpon>GroupTestingUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\UserControls\TestingListUserControl.xaml.cs">
+    <Compile Include="UI\PsychologistInterface\UserControls\YearTabUserControl.xaml.cs">
+      <DependentUpon>YearTabUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\StudentInterface\UserControls\TestingListUserControl.xaml.cs">
       <DependentUpon>TestingListUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\UserControls\TestingUserControl.xaml.cs">
+    <Compile Include="UI\StudentInterface\UserControls\TestingUserControl.xaml.cs">
       <DependentUpon>TestingUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Windows\PsychologistModeWindow.xaml.cs">
+    <Compile Include="UI\PsychologistInterface\Windows\PsychologistModeWindow.xaml.cs">
       <DependentUpon>PsychologistModeWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Windows\StudentInfoWindow.xaml.cs">
+    <Compile Include="UI\StudentInterface\Windows\StudentInfoWindow.xaml.cs">
       <DependentUpon>StudentInfoWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="UI\Pages\GroupListPage.xaml">
+    <Page Include="UI\PsychologistInterface\Pages\GroupListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Pages\GroupPage.xaml">
+    <Page Include="UI\PsychologistInterface\Pages\GroupPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Pages\TestingListPage.xaml">
+    <Page Include="UI\PsychologistInterface\UserControls\YearTabUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Pages\TestingPage.xaml">
+    <Page Include="UI\StudentInterface\Pages\TestingListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\UserControls\GroupListUserControl.xaml">
+    <Page Include="UI\StudentInterface\Pages\TestingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\UserControls\GroupTestingUserControl.xaml">
+    <Page Include="UI\PsychologistInterface\UserControls\GroupListUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\UserControls\TestingListUserControl.xaml">
+    <Page Include="UI\PsychologistInterface\UserControls\GroupTestingUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\UserControls\TestingUserControl.xaml">
+    <Page Include="UI\StudentInterface\UserControls\TestingListUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Windows\AddEditGroupWindow.xaml">
+    <Page Include="UI\StudentInterface\UserControls\TestingUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Windows\MainWindow.xaml">
+    <Page Include="UI\PsychologistInterface\Windows\AddEditGroupWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\NavigatingWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -179,30 +188,30 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Instruments\Manager.cs" />
-    <Compile Include="UI\Pages\GroupListPage.xaml.cs">
+    <Compile Include="UI\PsychologistInterface\Pages\GroupListPage.xaml.cs">
       <DependentUpon>GroupListPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Pages\GroupPage.xaml.cs">
+    <Compile Include="UI\PsychologistInterface\Pages\GroupPage.xaml.cs">
       <DependentUpon>GroupPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Pages\TestingListPage.xaml.cs">
+    <Compile Include="UI\StudentInterface\Pages\TestingListPage.xaml.cs">
       <DependentUpon>TestingListPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Pages\TestingPage.xaml.cs">
+    <Compile Include="UI\StudentInterface\Pages\TestingPage.xaml.cs">
       <DependentUpon>TestingPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Windows\AddEditGroupWindow.xaml.cs">
+    <Compile Include="UI\PsychologistInterface\Windows\AddEditGroupWindow.xaml.cs">
       <DependentUpon>AddEditGroupWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Windows\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="UI\NavigatingWindow.xaml.cs">
+      <DependentUpon>NavigatingWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="UI\Windows\PsychologistModeWindow.xaml">
+    <Page Include="UI\PsychologistInterface\Windows\PsychologistModeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Windows\StudentInfoWindow.xaml">
+    <Page Include="UI\StudentInterface\Windows\StudentInfoWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
