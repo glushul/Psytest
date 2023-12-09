@@ -25,6 +25,7 @@ namespace Psytest.UI.PsychologistInterface.Pages
     public partial class GroupPage : Page
     {
         Group _group;
+        public static Dictionary<int, StackPanel> yearTabContentPairs = new Dictionary<int, StackPanel>();
         public GroupPage(Group group)
         {
             InitializeComponent();
@@ -43,6 +44,7 @@ namespace Psytest.UI.PsychologistInterface.Pages
             {
                 TextBlockNoResults.Visibility = Visibility.Hidden;
                 YearTabControl.Visibility = Visibility.Visible;
+
                 foreach (var year in years)
                 {
                     TabItem tabItem = new TabItem()
@@ -51,6 +53,18 @@ namespace Psytest.UI.PsychologistInterface.Pages
                         FontSize = 30
                     };
                     YearTabControl.Items.Add(tabItem);
+
+                    StackPanel stackPanel = new StackPanel()
+                    {
+                        HorizontalAlignment = HorizontalAlignment.Center
+                    };
+                    var testings = PsytestDBEntities.GetContext().Testings.ToList();
+                    foreach (var testing in testings)
+                    {
+                        YearTabUserControl yearTabUserControl = new YearTabUserControl(testing, _group, Int32.Parse(tabItem.Header.ToString()));
+                        stackPanel.Children.Add(yearTabUserControl);
+                    }
+                    yearTabContentPairs.Add(year.Key, stackPanel);
                 }
             }
         }
@@ -58,17 +72,7 @@ namespace Psytest.UI.PsychologistInterface.Pages
         private void YearTabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             TabItem tabItem = YearTabControl.SelectedItem as TabItem;
-            StackPanel stackPanel = new StackPanel()
-            {
-                HorizontalAlignment = HorizontalAlignment.Center
-            };
-            var testings = PsytestDBEntities.GetContext().Testings.ToList();
-            foreach (var testing in testings)
-            {
-                YearTabUserControl yearTabUserControl = new YearTabUserControl(testing, _group, Int32.Parse(tabItem.Header.ToString()));
-                stackPanel.Children.Add(yearTabUserControl);
-            }
-            tabItem.Content = stackPanel;
+            tabItem.Content = yearTabContentPairs[Int32.Parse(tabItem.Header.ToString())];
         }
     }
 }
