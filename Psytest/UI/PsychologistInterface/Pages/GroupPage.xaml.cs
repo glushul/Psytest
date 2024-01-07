@@ -25,12 +25,13 @@ namespace Psytest.UI.PsychologistInterface.Pages
     public partial class GroupPage : Page
     {
         Group _group;
-        public static Dictionary<int, StackPanel> yearTabContentPairs = new Dictionary<int, StackPanel>();
+        Dictionary<int, StackPanel> yearTabContentPairs = new Dictionary<int, StackPanel>();
         public GroupPage(Group group)
         {
             InitializeComponent();
+            yearTabContentPairs.Clear();
             _group = group;
-            Manager.ChosenGroup = group.FullName;
+            Manager.NavigatingText = group.FullName;
 
             var years = PsytestDBEntities.GetContext().StudentResults.
                 Where(p => p.GroupId == group.Id).
@@ -50,7 +51,7 @@ namespace Psytest.UI.PsychologistInterface.Pages
                     TabItem tabItem = new TabItem()
                     {
                         Header = year.Key,
-                        FontSize = 30
+                        FontSize = 22
                     };
                     YearTabControl.Items.Add(tabItem);
 
@@ -61,7 +62,7 @@ namespace Psytest.UI.PsychologistInterface.Pages
                     var testings = PsytestDBEntities.GetContext().Testings.ToList();
                     foreach (var testing in testings)
                     {
-                        YearTabUserControl yearTabUserControl = new YearTabUserControl(testing, _group, Int32.Parse(tabItem.Header.ToString()));
+                        GroupTestingTabUserControl yearTabUserControl = new GroupTestingTabUserControl(testing, _group, Int32.Parse(tabItem.Header.ToString()));
                         stackPanel.Children.Add(yearTabUserControl);
                     }
                     yearTabContentPairs.Add(year.Key, stackPanel);

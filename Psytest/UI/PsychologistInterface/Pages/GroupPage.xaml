@@ -11,9 +11,9 @@
     <Grid>
         <TextBlock x:Name="TextBlockNoResults" Grid.Row="1" Text="Ничего не найдено" 
                Visibility="Hidden" HorizontalAlignment="Center" FontSize="22" Foreground="Gray"/>
-        <ScrollViewer VerticalScrollBarVisibility="Visible">
+        <ScrollViewer>
             <StackPanel x:Name="MainStackPanel" Orientation="Vertical" HorizontalAlignment="Stretch">
-                <TabControl x:Name="YearTabControl" BorderBrush="#FF6984AB" BorderThickness="3" Margin="20"
+                <TabControl x:Name="YearTabControl" BorderThickness="3" Margin="20"
                             HorizontalAlignment="Center" SelectionChanged="YearTabControl_SelectionChanged"/>
             </StackPanel>
         </ScrollViewer>

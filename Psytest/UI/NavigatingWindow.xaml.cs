@@ -27,7 +27,8 @@ namespace Psytest
     {
         public NavigatingWindow()
         {
-            InitializeComponent(); 
+            InitializeComponent();
+            this.WindowState = WindowState.Maximized;
             Manager.FrameNavigation = FrameNavigation;
             FrameNavigation.Navigate(new TestingListPage());
         }
@@ -71,7 +72,7 @@ namespace Psytest
             }
             else if (Manager.FrameNavigation.Content.GetType() == typeof(GroupPage))
             {
-                TextBlockNavigation.Text = "Группа " + Manager.ChosenGroup;
+                TextBlockNavigation.Text = "Группа " + Manager.NavigatingText;
                 ButtonBack.Visibility = Visibility.Visible;
                 ButtonExit.Visibility = Visibility.Visible;
             }
@@ -83,7 +84,7 @@ namespace Psytest
             }
             else if (Manager.FrameNavigation.Content.GetType() == typeof(TestingPage))
             {
-                TextBlockNavigation.Text = "Тестирование";
+                TextBlockNavigation.Text = Manager.NavigatingText;
                 ButtonExit.Visibility = Visibility.Hidden;
                 ButtonBack.Visibility = Visibility.Hidden;
             }

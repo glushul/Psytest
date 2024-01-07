@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Psytest"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-        Title="Psytest" Height="700" Width="1350" FontFamily="Bahnschrift SemiBold"
-        MinWidth="1300" MinHeight="700" >
+        Title="Psytest" Height="700" Width="1300" FontFamily="Bahnschrift SemiBold"
+        MinWidth="1300" MinHeight="700">
     <Window.Resources>
         <Style TargetType="Button">
-            <Setter Property="Background" Value="#FFB5CDEF"/>
+            <Setter Property="Background" Value="#8eb1c2"/>
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="FontSize" Value="22"/>
             <Setter Property="Height" Value="40"/>
@@ -24,7 +24,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Background="#FFB5CDEF">
+        <Grid Grid.Row="0" Background="#acc8d7">
 
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
                 <TextBlock x:Name="TextBlockNavigation" FontSize="22" Foreground="Black"

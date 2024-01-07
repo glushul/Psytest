@@ -30,9 +30,12 @@ namespace Psytest.UI.Pages
         public TestingPage(Student student, Testing testing)
         {
             InitializeComponent();
+            PointCounter.questionAnswerPairs.Clear();
+            PointCounter.categoryPointCountPairs.Clear();
 
             _student = student;
             _testing = testing;
+            Manager.NavigatingText = _testing.Name;
 
             var questions = PsytestDBEntities.GetContext().Questions.
                 Where(p => p.TestingId == _testing.Id).ToList();
@@ -90,8 +93,6 @@ namespace Psytest.UI.Pages
                         MessageBox.Show(ex.ToString());
                     }
                 }
-                PointCounter.questionAnswerPairs.Clear();
-                PointCounter.categoryPointCountPairs.Clear();
             }
         }
     }

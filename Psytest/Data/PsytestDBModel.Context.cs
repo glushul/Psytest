@@ -41,7 +41,6 @@ namespace Psytest.Data
         public virtual DbSet<Question> Questions { get; set; }
         public virtual DbSet<Raging> Ragings { get; set; }
         public virtual DbSet<StudentResult> StudentResults { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Testing> Testings { get; set; }
     }
 }

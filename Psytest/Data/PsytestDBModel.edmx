@@ -92,16 +92,6 @@
           <Property Name="Age" Type="int" Nullable="false" />
           <Property Name="PointSum" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="Testing">
           <Key>
             <PropertyRef Name="Id" />
@@ -109,6 +99,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
           <Property Name="FullName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="OutputType" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Answer_Question">
           <End Role="Question" Type="Self.Question" Multiplicity="1" />
@@ -258,7 +249,6 @@
           <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Raging" EntityType="Self.Raging" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StudentResult" EntityType="Self.StudentResult" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Testing" EntityType="Self.Testing" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Answer_Question" Association="Self.FK_Answer_Question">
             <End Role="Question" EntitySet="Question" />
@@ -416,16 +406,6 @@
           <NavigationProperty Name="Group" Relationship="Self.FK_StudentResult_Group" FromRole="StudentResult" ToRole="Group" />
           <NavigationProperty Name="Testing" Relationship="Self.FK_StudentResult_Testing" FromRole="StudentResult" ToRole="Testing" />
         </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <EntityType Name="Testing">
           <Key>
             <PropertyRef Name="Id" />
@@ -433,6 +413,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OutputType" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Categories" Relationship="Self.FK_Category_Testing" FromRole="Testing" ToRole="Category" />
           <NavigationProperty Name="Questions" Relationship="Self.FK_Question_Testing" FromRole="Testing" ToRole="Question" />
           <NavigationProperty Name="StudentResults" Relationship="Self.FK_StudentResult_Testing" FromRole="Testing" ToRole="StudentResult" />
@@ -585,7 +566,6 @@
           <EntitySet Name="Questions" EntityType="Self.Question" />
           <EntitySet Name="Ragings" EntityType="Self.Raging" />
           <EntitySet Name="StudentResults" EntityType="Self.StudentResult" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Testings" EntityType="Self.Testing" />
           <AssociationSet Name="FK_Answer_Question" Association="Self.FK_Answer_Question">
             <End Role="Question" EntitySet="Questions" />
@@ -728,23 +708,13 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="PsytestDBModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Testings">
             <EntityTypeMapping TypeName="PsytestDBModel.Testing">
               <MappingFragment StoreEntitySet="Testing">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="OutputType" ColumnName="OutputType" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

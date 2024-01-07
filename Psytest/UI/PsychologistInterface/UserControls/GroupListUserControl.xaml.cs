@@ -29,7 +29,7 @@ namespace Psytest.UI.PsychologistInterface.UserControls
             InitializeComponent();
         }
 
-        private void ButtonSeeGroup_Click(object sender, RoutedEventArgs e)
+        private void UserControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Manager.FrameNavigation.Navigate(new GroupPage(DataContext as Group));
         }

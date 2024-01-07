@@ -28,6 +28,6 @@ namespace Psytest.Instruments
                 Gender = gender;
             }
         }
-        public static string ChosenGroup { get; set; }
+        public static string NavigatingText { get; set; }
     }
 }

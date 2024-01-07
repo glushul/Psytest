@@ -13,7 +13,7 @@
         </Style>
 
         <Style TargetType="Button">
-            <Setter Property="Background" Value="#FF26436C"/>
+            <Setter Property="Background" Value="#365563"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontSize" Value="22"/>
             <Setter Property="Height" Value="40"/>
@@ -30,7 +30,7 @@
             </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#FFB5CDEF"/>
+                    <Setter Property="Background" Value="#acc8d7"/>
                     <Setter Property="Foreground" Value="Black"/>
                 </Trigger>
             </Style.Triggers>
@@ -44,7 +44,7 @@
         </Style>
 
         <Style TargetType="Border">
-            <Setter Property="BorderBrush" Value="#FF6984AB"/>
+            <Setter Property="BorderBrush" Value="#365563"/>
             <Setter Property="CornerRadius" Value="3"/>
         </Style>
 
