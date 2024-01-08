@@ -1,22 +1,10 @@
 ﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
-using Microsoft.Win32;
 using Psytest.Data;
-using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Psytest.UI.PsychologistInterface.UserControls
 {
@@ -63,7 +51,6 @@ namespace Psytest.UI.PsychologistInterface.UserControls
 
                 PdfWriter.GetInstance(doc, new FileStream(fileName, FileMode.Create));
 
-                //Открытие документ
                 doc.Open();
 
                 if (_testing.OutputType == 1)
@@ -74,8 +61,7 @@ namespace Psytest.UI.PsychologistInterface.UserControls
                     var results = PsytestDBEntities.GetContext().StudentResults.
                     Where(p => p.GroupId == _group.Id && p.TestingId == _testing.Id && p.TestingYear == _year).
                     OrderBy(p => new { p.Surname, p.Name, p.CategoryId }).GroupBy(p => new { p.Surname, p.Name });
-
-                    //Создание объекта таблицы
+                    
                     PdfPTable table = new PdfPTable(1 + categories.Count*3);
 
                     //Добавление в таблицу общего заголовка
@@ -88,6 +74,7 @@ namespace Psytest.UI.PsychologistInterface.UserControls
 
                     float[] widths = new float[1 + categories.Count * 3];
 
+                    //Добавление колонок таблицы
                     cell = new PdfPCell(new Phrase(new Phrase(0, "ФИО", fonts[0])));
                     cell.BackgroundColor = BaseColor.LIGHT_GRAY;
                     table.AddCell(cell);
@@ -111,8 +98,10 @@ namespace Psytest.UI.PsychologistInterface.UserControls
                         widths[j+3] = 3f;
                     }
 
+                    //Задание ширины
                     table.SetWidths(widths);
 
+                    //Добавление результатов в таблицу
                     foreach (var result in results)
                     {
                         table.AddCell(new Phrase(75, result.Key.Surname + " " +
@@ -146,7 +135,6 @@ namespace Psytest.UI.PsychologistInterface.UserControls
 
                     foreach (var result in results)
                     {
-                        //Создание объекта таблицы
                         PdfPTable table = new PdfPTable(2);
                         table.SetWidths(new float[] { 1f, 5f });
 
@@ -161,7 +149,7 @@ namespace Psytest.UI.PsychologistInterface.UserControls
                         cell.HorizontalAlignment = 1;
                         table.AddCell(cell);
 
-                        //Добавление всех остальных ячеек
+                        //Добавление результатов в таблицу
                         foreach (var studentResult in result)
                         {
                             PdfPCell cellCategory = new PdfPCell(new Phrase(100, studentResult.Category.Name,
@@ -176,6 +164,7 @@ namespace Psytest.UI.PsychologistInterface.UserControls
                             table.AddCell(new Phrase(75, raging.Description, fonts[raging.FontStyle]));
                             table.AddCell(new Phrase(75, raging.Name.ToString(), fonts[raging.FontStyle]));
                         }
+
                         //Добавление таблицы в документ
                         doc.Add(table);
                         doc.NewPage();
@@ -191,7 +180,6 @@ namespace Psytest.UI.PsychologistInterface.UserControls
                     OrderBy(p => new { p.Surname, p.Name, p.CategoryId }).
                     GroupBy(p => new { p.Surname, p.Name });
 
-                    //Создание объекта таблицы
                     PdfPTable table = new PdfPTable(2);
 
                     //Добавление в таблицу общего заголовка
@@ -204,6 +192,7 @@ namespace Psytest.UI.PsychologistInterface.UserControls
 
                     float[] widths = { 1f, 3f };
 
+                    //Добавление колонок таблицы
                     cell = new PdfPCell(new Phrase(new Phrase(0, "ФИО", fonts[0])));
                     cell.BackgroundColor = BaseColor.LIGHT_GRAY;
                     table.AddCell(cell);
@@ -212,8 +201,10 @@ namespace Psytest.UI.PsychologistInterface.UserControls
                     cell.BackgroundColor = BaseColor.LIGHT_GRAY;
                     table.AddCell(cell);
 
+                    //Задание ширины
                     table.SetWidths(widths);
 
+                    //Добавление результатов в таблицу
                     foreach (var result in results)
                     {
                         table.AddCell(new Phrase(75, result.Key.Surname + " " +

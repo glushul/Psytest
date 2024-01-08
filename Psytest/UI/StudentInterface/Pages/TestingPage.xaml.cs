@@ -2,19 +2,9 @@
 using Psytest.Instruments;
 using Psytest.UI.UserControls;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using static Psytest.Instruments.Manager;
 
 namespace Psytest.UI.Pages
@@ -30,6 +20,8 @@ namespace Psytest.UI.Pages
         public TestingPage(Student student, Testing testing)
         {
             InitializeComponent();
+
+            //Очищение словарей
             PointCounter.questionAnswerPairs.Clear();
             PointCounter.categoryPointCountPairs.Clear();
 
@@ -37,6 +29,7 @@ namespace Psytest.UI.Pages
             _testing = testing;
             Manager.NavigatingText = _testing.Name;
 
+            //Добавление вопросов и вариантов ответов на страницу
             var questions = PsytestDBEntities.GetContext().Questions.
                 Where(p => p.TestingId == _testing.Id).ToList();
             for (int i = 0; i < questions.Count; i++)
@@ -59,7 +52,7 @@ namespace Psytest.UI.Pages
                 {
                     if (questionAnswerPair.Value == 0)
                     {
-                        MessageBox.Show($"Ответ на вопрос №{questionAnswerPair.Key} не выбран!");
+                        MessageBox.Show($"Ответ на вопрос №{questionAnswerPair.Key} не выбран");
                         return;
                     }
                     else
@@ -70,6 +63,7 @@ namespace Psytest.UI.Pages
                     }
                 }
 
+                //Сохранение результатов в базу данных
                 foreach (var categoryPointCountPair in PointCounter.categoryPointCountPairs)
                 {
                     StudentResult studentResult = new StudentResult();

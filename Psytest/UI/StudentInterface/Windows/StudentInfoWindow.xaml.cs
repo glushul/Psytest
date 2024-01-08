@@ -1,20 +1,9 @@
 ﻿using Psytest.Data;
-using Psytest.Instruments;
 using Psytest.UI.Pages;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using static Psytest.Instruments.Manager;
 
 namespace Psytest.UI.Windows
@@ -24,7 +13,7 @@ namespace Psytest.UI.Windows
     /// </summary>
     public partial class StudentInfoWindow : Window
     {
-        Testing _testing = new Testing();
+        Testing _testing;
         public StudentInfoWindow(Testing chosenTesting)
         {
             InitializeComponent();
@@ -50,6 +39,7 @@ namespace Psytest.UI.Windows
                     "После нажатия кнопки Да начнется тестирование без возможности выйти из него.",
                     "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
                 {
+                    //Удаление прошлых результатов, если студент уже проходил тестирование
                     var studentResults = PsytestDBEntities.GetContext().StudentResults.
                     Where(p => p.Name == student.Name 
                     && p.Surname == p.Surname && p.Age == student.Age 
@@ -73,6 +63,58 @@ namespace Psytest.UI.Windows
             {
                 MessageBox.Show("Заполните все данные", "Ошибка",
                     MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        //Обработчики кнопок окна
+        private void ButtonClose_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+
+        //Обработчики нажатия кнопки Enter
+        private void TextBoxAge_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                ButtonStart_Click(this, new RoutedEventArgs());
+            }
+        }
+
+        private void TextBoxName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                ButtonStart_Click(this, new RoutedEventArgs());
+            }
+        }
+
+        private void TextBoxSurname_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                ButtonStart_Click(this, new RoutedEventArgs());
+            }
+        }
+
+        private void ComboBoxGroup_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                ButtonStart_Click(this, new RoutedEventArgs());
+            }
+        }
+
+        private void ComboBoxGender_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                ButtonStart_Click(this, new RoutedEventArgs());
             }
         }
     }

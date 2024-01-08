@@ -1,9 +1,4 @@
 ﻿using Psytest.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 
 namespace Psytest.Instruments
@@ -12,6 +7,8 @@ namespace Psytest.Instruments
     {
         //Основной фрейм навигации
         public static Frame FrameNavigation { get; set; }
+
+        //Класс для обеспечения удобства передачи данных
         public class Student
         {
             public string Name { get; set; }
@@ -28,6 +25,8 @@ namespace Psytest.Instruments
                 Gender = gender;
             }
         }
+
+        //Текст для изменения заголовка окна
         public static string NavigatingText { get; set; }
     }
 }

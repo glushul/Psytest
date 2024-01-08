@@ -1,20 +1,11 @@
 ﻿using Psytest.Data;
 using Psytest.Instruments;
-using Psytest.UI.Pages;
 using Psytest.UI.PsychologistInterface.Pages;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Psytest.UI.Windows
 {
@@ -27,6 +18,7 @@ namespace Psytest.UI.Windows
         public AddEditGroupWindow()
         {
             InitializeComponent();
+
             //Заполненик комбо боксов
             ComboBoxForm.Items.Add("Бюджет");
             ComboBoxForm.Items.Add("Коммерция");
@@ -34,16 +26,13 @@ namespace Psytest.UI.Windows
             ComboBoxDepartments.ItemsSource = PsytestDBEntities.
                 GetContext().Faculties.ToList();
             ComboBoxDepartments.SelectedIndex = 0;
+
             DataContext = _group;
         }
-
-        /// <summary>
-        /// Сохранение группы
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
+            //Составление полного наименования группы
             string form = "";
             if (ComboBoxForm.SelectedIndex == 0)
                 form = "Д9";
@@ -53,6 +42,8 @@ namespace Psytest.UI.Windows
                 + form + "-" + (ComboBoxDepartments.SelectedValue as Faculty).Name;
             _group.FacultyId = (ComboBoxDepartments.SelectedValue as Faculty).Id;
 
+
+            //Обнаружение ошибок
             StringBuilder errors = new StringBuilder();
 
             if (_group.Number <= 0)
@@ -79,6 +70,42 @@ namespace Psytest.UI.Windows
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+            }
+        }
+
+        //Обработчики кнопок окна
+        private void ButtonClose_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+
+        //Обработчики нажатия кнопки Enter
+        private void TextBoxNumber_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                ButtonSave_Click(this, new RoutedEventArgs());
+            }
+        }
+
+        private void ComboBoxForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                ButtonSave_Click(this, new RoutedEventArgs());
+            }
+        }
+
+        private void ComboBoxDepartments_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                ButtonSave_Click(this, new RoutedEventArgs());
             }
         }
     }

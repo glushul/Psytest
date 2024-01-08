@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\Images\icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
       <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
@@ -247,7 +250,6 @@
     <Resource Include="Resources\Images\edit.png" />
     <Resource Include="Resources\Images\exit.png" />
     <Resource Include="Resources\Images\icon.png" />
-    <Resource Include="Resources\Images\leftArrow.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -263,6 +265,8 @@
       <DependentUpon>PsytestDBModel.edmx</DependentUpon>
       <LastGenOutput>PsytestDBModel.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\Images\icon.ico" />
+    <Resource Include="Resources\Images\leftArrow.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

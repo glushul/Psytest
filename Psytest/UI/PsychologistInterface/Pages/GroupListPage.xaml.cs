@@ -2,19 +2,9 @@
 using Psytest.Instruments;
 using Psytest.UI.Windows;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Psytest.UI.PsychologistInterface.Pages
 {
@@ -35,41 +25,24 @@ namespace Psytest.UI.PsychologistInterface.Pages
             ComboBoxFaculties.SelectedIndex = 0;
         }
 
-        /// <summary>
-        /// Фильтрация по курсу
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void ComboBoxCourse_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             UpdateGroups();
         }
 
-        /// <summary>
-        /// Фильтрация по отделениям
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void ComboBoxFaculties_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             UpdateGroups();
         }
 
-        /// <summary>
-        /// Поиск по номеру группы
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void TextBoxNumber_TextChanged(object sender, TextChangedEventArgs e)
         {
             UpdateGroups();
         }
 
-        /// <summary>
-        /// Именение интерфейса при фильтрации и поиске
-        /// </summary>
         private void UpdateGroups()
         {
+            //Сортировка и фильтр групп
             var groups = PsytestDBEntities.GetContext().Groups.ToList();
 
             groups = groups.Where(p => p.Number.ToString().Contains(TextBoxNumber.Text)).
@@ -93,11 +66,6 @@ namespace Psytest.UI.PsychologistInterface.Pages
             }
         }
 
-        /// <summary>
-        /// Удаление группы
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void ButtonDeleteGroup_Click(object sender, RoutedEventArgs e)
         {
             if (GroupListView.SelectedItems.Count > 0)
@@ -124,11 +92,6 @@ namespace Psytest.UI.PsychologistInterface.Pages
                     MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
-        /// <summary>
-        /// Добавление группы
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void ButtonAddGroup_Click(object sender, RoutedEventArgs e)
         {
             AddEditGroupWindow addEditGroupWindow = new AddEditGroupWindow();

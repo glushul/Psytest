@@ -2,21 +2,9 @@
 using Psytest.UI.Pages;
 using Psytest.UI.PsychologistInterface.Pages;
 using Psytest.UI.Windows;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Psytest
 {
@@ -33,21 +21,11 @@ namespace Psytest
             FrameNavigation.Navigate(new TestingListPage());
         }
 
-        /// <summary>
-        /// Переход на страницу назад
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void ButtonBack_Click(object sender, RoutedEventArgs e)
         {
             Manager.FrameNavigation.GoBack();
         }
 
-        /// <summary>
-        /// Выход из системы
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void ButtonExit_Click(object sender, RoutedEventArgs e)
         {
 
@@ -64,6 +42,7 @@ namespace Psytest
 
         private void FrameNavigation_Navigated(object sender, NavigationEventArgs e)
         {
+            //Изменение видимости кнопок и текста главного заголовка окна
             if (Manager.FrameNavigation.Content.GetType() == typeof(TestingListPage))
             {
                 TextBlockNavigation.Text = "Тестирования";
@@ -88,6 +67,30 @@ namespace Psytest
                 ButtonExit.Visibility = Visibility.Hidden;
                 ButtonBack.Visibility = Visibility.Hidden;
             }
+        }
+
+        //Обработчики кнопок окна
+        private void ButtonClose_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void ButtonMaximise_Click(object sender, RoutedEventArgs e)
+        {
+            if (WindowState == WindowState.Maximized)
+                WindowState = WindowState.Normal;
+            else
+                WindowState = WindowState.Maximized;
+        }
+
+        private void ButtonCollapse_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
         }
     }
 }
