@@ -1,0 +1,21 @@
+﻿<Page x:Class="Psytest.UI.PsychologistInterface.Pages.GroupPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Psytest.UI.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="1350"
+      Title="GroupPage">
+
+    <Grid>
+        <TextBlock x:Name="TextBlockNoResults" Grid.Row="1" Text="Ничего не найдено" 
+               Visibility="Hidden" HorizontalAlignment="Center" FontSize="22" Foreground="Gray"/>
+        <ScrollViewer>
+            <StackPanel x:Name="MainStackPanel" Orientation="Vertical" HorizontalAlignment="Stretch">
+                <TabControl x:Name="YearTabControl" BorderThickness="3" Margin="20"
+                            HorizontalAlignment="Center" SelectionChanged="YearTabControl_SelectionChanged"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

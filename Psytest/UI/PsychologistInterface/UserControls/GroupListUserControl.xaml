@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="Psytest.UI.PsychologistInterface.UserControls.GroupListUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Psytest.UI.UserControls"
+             mc:Ignorable="d" MinHeight="50" MinWidth="200"
+             FontFamily="Verdana"
+             MouseDoubleClick="UserControl_MouseDoubleClick">
+    <Border BorderThickness="1" Background="#EAEFF2">
+        <TextBlock x:Name="FullnameTextBlock" Grid.Row="0" Text="{Binding FullName}" FontSize="22" 
+                       TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center"
+                       Width="200" TextAlignment="Center"/>
+    </Border>
+</UserControl>

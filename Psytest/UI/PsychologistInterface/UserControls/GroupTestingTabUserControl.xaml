@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="Psytest.UI.PsychologistInterface.UserControls.GroupTestingTabUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Psytest.UI.PsychologistInterface.UserControls"
+             mc:Ignorable="d" HorizontalAlignment="Center" Margin="10">
+    <Border  BorderThickness="1" HorizontalAlignment="Stretch" Height="100">
+        <Grid Height="100">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="600"/>
+                <ColumnDefinition Width="320"/>
+                <ColumnDefinition Width="300"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="TextBlockFullName" Grid.Column="0" Margin="20" Width="560" 
+                       HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="22"
+                       TextWrapping="Wrap"/>
+            <TextBlock x:Name="TextBlockStudentCount" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
+            <Button x:Name="ButtonSave" Grid.Column="2" Content="Сохранить" Click="ButtonSave_Click"/>
+        </Grid>
+    </Border>
+</UserControl>

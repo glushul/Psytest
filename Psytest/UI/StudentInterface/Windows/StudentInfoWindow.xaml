@@ -1,0 +1,68 @@
+﻿<Window x:Class="Psytest.UI.Windows.StudentInfoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Psytest.UI.Windows"
+        mc:Ignorable="d" Icon="/Resources/Images/icon.png" MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        Title="Студент" Height="444" Width="500" WindowStartupLocation="CenterScreen" WindowStyle="None"
+        MinHeight="444" MinWidth="500" MaxHeight="444" MaxWidth="500" Topmost="True" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="140"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="0" Background="#E9EAEC" Grid.ColumnSpan="2">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <Image Source="/Resources/Images/icon.png" Margin="2"/>
+                <TextBlock Text="Студент" FontSize="14"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="ButtonClose" Height="auto" Width="25" BorderThickness="0" Background="#E9EAEC" Content="⨯" FontSize="26" Click="ButtonClose_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#8eb1c2"/>
+                            <Setter Property="Foreground" Value="Black"/>
+                            <Setter Property="FontSize" Value="22"/>
+                            <Setter Property="Height" Value="40"/>
+                            <Setter Property="Width" Value="200"/>
+                            <Setter Property="FontFamily" Value="Bahnschrift"/>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Фамилия:" HorizontalAlignment="Right" FontSize="22"/>
+        <TextBox x:Name="TextBoxSurname" Grid.Row="1" Grid.Column="1" Width="300" HorizontalAlignment="Left"
+                 Margin="15, 0, 15, 0" Height="40" Text="{Binding Number}" MaxLength="30" HorizontalContentAlignment="Left" 
+                 KeyDown="TextBoxSurname_KeyDown"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Имя:" HorizontalAlignment="Right" FontSize="22"/>
+        <TextBox x:Name="TextBoxName" Grid.Row="2" Grid.Column="1" Width="300" HorizontalAlignment="Left"
+                 Margin="15, 0, 15, 0" Height="40" Text="{Binding Number}" MaxLength="20" HorizontalContentAlignment="Left" 
+                 KeyDown="TextBoxName_KeyDown"/>
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Группа:" HorizontalAlignment="Right" FontSize="22"/>
+        <ComboBox x:Name="ComboBoxGroup" Grid.Row="3" Grid.Column="1" Width="200" HorizontalAlignment="Left"
+                 Margin="15, 0, 15, 0" Height="40" HorizontalContentAlignment="Center" SelectedItem="{Binding Group}"
+                 DisplayMemberPath="FullName" KeyDown="ComboBoxGroup_KeyDown"/>
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="Пол:" HorizontalAlignment="Right" FontSize="22"/>
+        <ComboBox x:Name="ComboBoxGender" Grid.Row="4" Grid.Column="1" Width="200" HorizontalAlignment="Left"
+                 Margin="15, 0, 15, 0" Height="40" HorizontalContentAlignment="Center" SelectedItem="{Binding Gender}"
+                 DisplayMemberPath="Name" KeyDown="ComboBoxGender_KeyDown"/>
+        <TextBlock Grid.Row="5" Grid.Column="0" Text="Возраст:" HorizontalAlignment="Right" FontSize="22"/>
+        <TextBox x:Name="TextBoxAge" Grid.Row="5" Grid.Column="1" Width="100" HorizontalAlignment="Left"
+                 Margin="15, 0, 15, 0" Height="40" Text="{Binding Age}" MaxLength="2" HorizontalContentAlignment="Left" 
+                 KeyDown="TextBoxAge_KeyDown"/>
+        <Button x:Name="ButtonStart" Grid.Row="6" Grid.ColumnSpan="2" Content="Начать" Click="ButtonStart_Click"/>
+    </Grid>
+</Window>
