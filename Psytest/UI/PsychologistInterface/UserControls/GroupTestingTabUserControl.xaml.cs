@@ -73,7 +73,7 @@ namespace Psytest.UI.PsychologistInterface.UserControls
                         result.Surname = Crypter.Decrypt(result.Surname);
                         result.Name = Crypter.Decrypt(result.Name);
                     }
-                    var results = resultsPrimary.OrderBy(p => p.CategoryId).OrderBy(p => p.Name).OrderBy(p => p.Surname).
+                    var results = resultsPrimary.OrderBy(p => p.Surname).ThenBy(p => p.Name).ThenBy(p => p.CategoryId).
                         GroupBy(p => new { p.Surname, p.Name });
                     
                     PdfPTable table = new PdfPTable(1 + categories.Count*3);
@@ -151,7 +151,7 @@ namespace Psytest.UI.PsychologistInterface.UserControls
                         result.Surname = Crypter.Decrypt(result.Surname);
                         result.Name = Crypter.Decrypt(result.Name);
                     }
-                    var results = resultsPrimary.OrderBy(p => p.Name).OrderBy(p => p.Surname).OrderBy(p => p.CategoryId).
+                    var results = resultsPrimary.OrderBy(p => p.Surname).ThenBy(p => p.Name).ThenBy(p => p.CategoryId).
                         GroupBy(p => new { p.Surname, p.Name, p.Gender, p.Age, p.Group });
 
                     int counter = 1;
@@ -203,7 +203,7 @@ namespace Psytest.UI.PsychologistInterface.UserControls
                         result.Surname = Crypter.Decrypt(result.Surname);
                         result.Name = Crypter.Decrypt(result.Name);
                     }
-                    var results = resultsPrimary.OrderBy(p => p.CategoryId).OrderBy(p => p.Name).OrderBy(p => p.Surname).
+                    var results = resultsPrimary.OrderBy(p => p.Surname).ThenBy(p => p.Name).ThenBy(p => p.CategoryId).
                         GroupBy(p => new { p.Surname, p.Name });
 
                     PdfPTable table = new PdfPTable(2);
